@@ -1,0 +1,43 @@
+.messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.messages .message {
+    margin: 10px;
+    display: flex;
+}
+
+.message.messageOutcoming {
+    justify-content: flex-end;
+}
+
+.chat {
+    height: 100%;
+    overflow-y: auto;
+    border-bottom: 1px solid #f8d0d0;
+}
+
+.messageText {
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 400px;
+    overflow-wrap: break-word;
+}
+
+.messageIncoming .messageText {
+    background-color: bisque;
+}
+
+.messageOutcoming .messageText {
+    background-color: aquamarine;
+}
+
+.newMessage {
+    padding: 20px 10px;
+    height: 90px;
+}

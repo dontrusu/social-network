@@ -1,0 +1,28 @@
+.nav {
+    grid-area: n;
+    background-color: #9faec875;
+}
+
+.nav a {
+    color: #2b1919;
+    text-decoration: none;
+}
+
+.nav a.active {
+    color: #6b00ae;
+    font-size: 18px;
+}
+
+a.active .navItem {
+    background-color: #0054ff75;
+}
+
+.navItem {
+    padding: 10px 20px;
+    transition: font-size 0.5s, background-color 0.3s;
+    border-bottom: 1px solid white;
+}
+
+.navItem:hover {
+    background-color: #89b0ff6e;
+}

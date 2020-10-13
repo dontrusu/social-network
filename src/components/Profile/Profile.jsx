@@ -1,24 +1,14 @@
 import React from "react"
-import styles from "./Profile.module.css"
+import s from "./Profile.module.css"
+import MyPosts from "./MyPosts/MyPosts"
+import ProfileInfo from "./ProfileInfo/ProfileInfo"
 
 const Profile = props => {
 
     return(
-        <div className="content">
-            <div>
-                <img src="" alt=""/>
-            </div>
-            <div>
-                ava + description
-            </div>
-            <div>
-                My Posts
-                <div>New Post</div>
-                <div>
-                    <div>post 1</div>
-                    <div>post 2</div>
-                </div>
-            </div>
+        <div>
+            <ProfileInfo />
+            <MyPosts />
         </div>
     )
 }

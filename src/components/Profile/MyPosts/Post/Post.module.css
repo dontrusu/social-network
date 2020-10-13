@@ -1,0 +1,16 @@
+.item {
+    padding: 10px;
+    margin: 10px;
+    background: lightyellow;
+    display: flex;
+    align-items: center;
+}
+
+.item img {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.text {
+    margin-left: 10px;
+}

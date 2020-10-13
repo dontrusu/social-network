@@ -1,0 +1,29 @@
+.dialogs {
+    height: calc(100vh - 85px);
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+.chats {
+    border-right: 2px solid #ffe7e7;
+}
+
+.chats a {
+    text-decoration: none;
+}
+
+.chats a.active {
+    color: #6b00ae;
+    font-size: 20px;
+}
+
+.chats .chat {
+    padding: 20px;
+    border-bottom: 1px solid #c9c9c9;
+    text-align: center;
+    transition: font-size 0.5s, background-color 0.3s;
+}
+
+a.active .chat {
+    background-color: #f3ffbed4;
+}
