@@ -3,13 +3,18 @@ import s from "./ProfileInfo.module.css"
 
 const ProfileInfo = props => {
 
+    const { profile } = props
+
+    let userAvatar = profile.photos?.large || `https://robohash.org/${profile.userId}?bgset=bg1`
+
     return(
         <div className={s.profile}>
+            <div>{profile.fullName}</div>
             <div>
-                <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="img"/>
+                <img src={userAvatar} alt="img"/>
             </div>
             <div className={s.profileDescription}>
-                Father, Husband, Christian.
+                {profile.aboutMe}
             </div>
         </div>
     )

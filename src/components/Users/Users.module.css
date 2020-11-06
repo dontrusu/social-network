@@ -1,0 +1,94 @@
+.users {
+    padding: 20px 40px 80px;
+}
+
+.user {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    border-bottom: 1px solid #c0c4b0;
+}
+
+.userActions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userInfo {
+    display: grid;
+    grid-template-areas:
+        "name location"
+        "status location";
+    grid-template-rows: 45px 20px;
+    margin-left: 15px;
+    padding: 10px;
+    border: 2px solid rgb(155, 155, 155);
+    border-radius: 10px;
+    min-width: 400px;
+    background-color: aliceblue;
+}
+
+.name {
+    grid-area: name;
+    font-size: 18px;
+    color: #477ba9;
+}
+
+.status {
+    grid-area: status;
+    font-size: 14px;
+    color: #898989;
+}
+
+.location {
+    grid-area: location;
+    text-align: end;
+    font-size: 18px;
+    color: #898989;
+}
+
+.userAvatar img {
+    height: 90px;
+    border-radius: 50%;
+}
+
+.follow {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.follow:hover {
+    background-color: #3fca44;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.paginationItem {
+    margin: 5px;
+    font-size: 18px;
+}
+
+.selected {
+    font-weight: 600;
+    font-size: 19px;
+}
+
+.loader {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
