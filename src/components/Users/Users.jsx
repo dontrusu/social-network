@@ -5,7 +5,8 @@ import Pagination from "./Pagination/Pagination"
 
 const Users = props => {
 
-    const { users, follow, unfollow, count, page, totalCount, onPageChange } = props
+    const { users, follow, unfollow, count, page, totalCount, 
+        onPageChange, loadingFollow, auth } = props
 
     return(
         <div className={s.users}>
@@ -15,6 +16,8 @@ const Users = props => {
                     data={user}
                     follow={follow}
                     unfollow={unfollow}
+                    loadingFollow={loadingFollow}
+                    auth={auth}
                 />
             ))}
             <Pagination 

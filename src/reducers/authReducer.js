@@ -1,10 +1,11 @@
-import { SET_USER_DATA } from "../actions/authActions"
+import { SET_USER_DATA, SET_LOADING } from "../actions/authActions"
 
 const initialState = {
     id: null,
     email: "",
     login: "",
     isAuth: false,
+    loading: true,
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -14,6 +15,11 @@ export const authReducer = (state = initialState, action) => {
                 ...state, 
                 ...action.payload,
                 isAuth: true,
+            }
+        case SET_LOADING: 
+            return {
+                ...state,
+                loading: action.payload
             }
         default: 
             return state

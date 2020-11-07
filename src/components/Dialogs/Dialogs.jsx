@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import s from "./Dialogs.module.css"
 import Chat from "./Chat/Chat"
 import Messages from "./Messages/Messages"
@@ -11,7 +11,7 @@ const Dialogs = props => {
     return(
         <div className={s.dialogs}>
             <div className={s.chats}>
-                {chats.map(chat => <Chat name={chat.name} id={chat.id} />)}
+                {chats.map(chat => <Chat key={chat.id} name={chat.name} id={chat.id} />)}
             </div>
             <Messages messages={messages} addMessage={addMessage} />
         </div>

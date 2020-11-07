@@ -1,8 +1,9 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import Main from "../components/Main";
-import { setUserData } from "../actions/authActions";
-import { getAuth } from "../controllers/MainController/MainController";
+import { getAuthData } from "../actions/authActions";
+import Loader from "../components/common/Loader/Loader";
+import "../App.css"
 
 const MainContainer = props => {
 
@@ -10,16 +11,14 @@ const MainContainer = props => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getAuth()
-        .then(data => {
-            dispatch(setUserData(data.data))
-        })
-        .catch(error => console.log(error.response))
-        .finally(() => {})
+        dispatch(getAuthData())
     }, [dispatch])
 
     return(
-        <Main auth={auth} />
+        <>
+            {auth.loading && <Loader className="loader" />}
+            {!auth.loading && <Main auth={auth} />}
+        </>
     )
 }
 

@@ -17,7 +17,7 @@ const Messages = props => {
     return(
         <div className={s.messages}>
             <div className={s.chat} ref={chatRef} >
-                {messages.map(message => <Message message={message} />)}
+                {messages.map((message, i) => <Message key={i} message={message} />)}
             </div>
             <NewMessage onSave={addMessage} />
         </div>

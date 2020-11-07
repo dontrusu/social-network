@@ -1,4 +1,5 @@
-import { ADD_USER, FOLLOW, UNFOLLOW, SET_USERS, CHANGE_PAGE, TOGGLE_IS_FETCHING } from "../actions/usersActions"
+import { ADD_USER, FOLLOW, UNFOLLOW, SET_USERS, CHANGE_PAGE, 
+        TOGGLE_IS_FETCHING, LOADING_FOLLOW } from "../actions/usersActions"
 
 const defaultState = {
     users: [
@@ -62,6 +63,7 @@ const defaultState = {
     count: 10,
     totalCount: 0,
     isFetching: false,
+    loadingFollow: []
 }
 
 export const usersReducer = (state = defaultState, action) => {
@@ -107,6 +109,14 @@ export const usersReducer = (state = defaultState, action) => {
                 ...state,
                 isFetching: action.payload
             }
+        case LOADING_FOLLOW: {
+            return {
+                ...state,
+                loadingFollow: action.payload.fetching 
+                ? [ ...state.loadingFollow, action.payload.id ]
+                : state.loadingFollow.filter(id => id !== action.payload.id) 
+            }
+        }
         default: 
             return state
     }

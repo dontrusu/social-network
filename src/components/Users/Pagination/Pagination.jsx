@@ -11,6 +11,7 @@ const Pagination = props => {
         for(let i=1; i <= totalPages; i++){
             items.push(
                 <button 
+                    key={i}
                     className={`${s.paginationItem} ${i === page ? s.selected : ""}`}
                     onClick={() => {onPageChange(i)}}
                 >

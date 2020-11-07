@@ -1,38 +1,17 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import s from "../Users.module.css"
-import { followUser, unFollowUser } from "../../../controllers/Users/UserController"
 
-const User = ({ data, follow, unfollow }) => {
+const User = props => {
+
+    const { data, follow, unfollow, loadingFollow, auth } = props
 
     const handleFollowUnfollow = () => {
         if(data.followed){
-            onUnfollow(data.id)
+            unfollow(data.id)
         }else{
-            onFollow(data.id)
+            follow(data.id)
         }
-    }
-
-    const onFollow = (id) => {
-        followUser(id)
-        .then(data => {
-            if(data.resultCode === 0){
-                follow(id)
-            }
-        })
-        .catch(error => console.log(error.response))
-        .finally()
-    }
-
-    const onUnfollow = (id) => {
-        unFollowUser(id)
-        .then(data => {
-            if(data.resultCode === 0){
-                unfollow(id)
-            }
-        })
-        .catch(error => console.log(error.response))
-        .finally()
     }
 
     return(
@@ -43,12 +22,18 @@ const User = ({ data, follow, unfollow }) => {
                         <img src={data.photos.small || `https://robohash.org/${data.id}?bgset=bg1`} alt=""/>
                     </div>
                 </NavLink>
-                <button className={s.follow} onClick={handleFollowUnfollow}>
+                <button 
+                    className={s.follow} 
+                    onClick={handleFollowUnfollow}
+                    disabled={!auth.isAuth || loadingFollow.includes(data.id)}
+                >
                     {data.followed ? "Unfollow" : "Follow"}
                 </button>
             </div>
             <div className={s.userInfo}>
-                <div className={`${s.name} ${s.infoItem}`}>{data.name}</div>
+                <NavLink to={`profile/${data.id}`}>
+                    <div className={`${s.name} ${s.infoItem}`}>{data.name}</div>
+                </NavLink>
                 <div className={`${s.status} ${s.infoItem}`}>{data.status || "No status..."}</div>
                 <div className={`${s.location} ${s.infoItem}`}>
                     <div>{data.location?.Country || "Ukraine"},</div>
