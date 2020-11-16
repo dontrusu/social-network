@@ -5,8 +5,20 @@ const getProfile = (userId) => {
     .then(response => response.data)
 }
 
+const getStatus = userId => {
+    return instance.get(`/profile/status/${userId}`)
+    .then(response => response.data)
+}
+
+const setStatus = status => {
+    return instance.put(`/profile/status`, { status })
+    .then(response => response.data)
+}
+
 const profileAPI = {
-    getProfile
+    getProfile,
+    getStatus,
+    setStatus,
 }
 
 export default profileAPI

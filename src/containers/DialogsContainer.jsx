@@ -2,6 +2,7 @@ import React from "react"
 import Dialogs from "../components/Dialogs/Dialogs"
 import { addMessage } from "../actions/dialogsActions"
 import { useDispatch, useSelector } from "react-redux";
+import withAuthRedirect from "../hoc/withAuthRedirect";
 
 const DialogsContainer = props => {
 
@@ -18,4 +19,4 @@ const DialogsContainer = props => {
     )
 }
 
-export default DialogsContainer
+export default withAuthRedirect(DialogsContainer)

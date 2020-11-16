@@ -1,3 +1,17 @@
+.profile {
+    margin: 10px;
+}
+
 .profileDescription {
     padding: 10px;
+    padding-top: 0;
+}
+
+.name {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.emptyStatus {
+    opacity: 0.4;
 }

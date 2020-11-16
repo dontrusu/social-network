@@ -20,7 +20,9 @@ const setLoading = (value) => {
 export const getAuthData = () => dispatch => {
     dispatch(setLoading(true))
     mainAPI.getAuth().then(data => {
-        dispatch(setUserData(data.data))
+        if(data.resultCode === 0){
+            dispatch(setUserData(data.data))
+        }
     })
     .catch(error => console.log(error.response))
     .finally(() => {

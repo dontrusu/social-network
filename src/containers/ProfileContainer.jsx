@@ -1,18 +1,21 @@
-import React from "react"
+import React, { useCallback } from "react"
 import Profile from "../components/Profile/Profile"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getProfile } from "../actions/profileActions";
+import { changeStatus, getProfile, getStatus } from "../actions/profileActions";
 import { withRouter } from "react-router-dom";
 import Loader from "../components/common/Loader/Loader";
 
 const ProfileContainer = props => {
 
     const profile = useSelector(state => state.profile.profile)
+    const status = useSelector(state => state.profile.status)
     const loading = useSelector(state => state.profile.loading)
     const logedUser = useSelector(state => state.auth)
 
     const dispatch = useDispatch()
+
+    const setStatus = useCallback((status) => dispatch(changeStatus(status)), [dispatch])
 
     useEffect(() => {
         let userId = props.match.params.userId ? props.match.params.userId : logedUser.id
@@ -20,12 +23,13 @@ const ProfileContainer = props => {
             return
         }
         dispatch(getProfile(userId))
+        dispatch(getStatus(userId))
     }, [dispatch, props.match.params.userId, logedUser.id])
 
     return(
         <>
             {loading && <Loader className="loader" />}
-            {!loading && <Profile profile={profile} />}
+            {!loading && <Profile profile={profile} setStatus={setStatus} status={status} logedUser={logedUser} />}
         </>
     )
 }
